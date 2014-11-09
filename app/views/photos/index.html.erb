@@ -1,0 +1,24 @@
+<html>
+
+  <head>
+  </head>
+
+  <body>
+    <% if @photos.any? %>
+      <% @photos.each do |photo|%>
+        <h2> <%= image_tag photo.image.url(:standard) %></h2>
+      <% end %>
+    <% else %>
+    No photos
+    <% end %>
+    <a href='#'>Add a photo</a>
+
+  </body>
+
+
+
+
+
+
+
+</html>
