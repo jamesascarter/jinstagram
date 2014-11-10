@@ -6,7 +6,7 @@
   <body>
     <% if @photos.any? %>
       <% @photos.each do |photo|%>
-        <p> <%= image_tag photo.image.url %></p>
+        <p> <%= image_tag photo.image.url(:thumb) %></p>
         <%= link_to "#{photo.caption}", photo_path(photo)%>
         <%= link_to "Delete", photo_path(photo), method: :delete %>
         <%= link_to "Add comment", new_photo_comment_path(photo) %>
@@ -19,7 +19,7 @@
               <% end %>
           </ul>
         <% else %>
-          <p>No reviews. </p>
+          <p>No comments. </p>
         <% end %>
 
       <% end %>

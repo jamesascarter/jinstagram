@@ -63,6 +63,12 @@ describe 'viewing photos' do
       click_link 'lovely stuff'
       expect(current_path).to eq "/photos/#{@owly.id}"
     end
+
+    it 'lets a user see photos on seperate page' do
+      visit '/photos'
+      click_link 'lovely stuff'
+      expect(page).to have_css 'img'
+    end
 end
 
 describe 'deleting restaurants' do
