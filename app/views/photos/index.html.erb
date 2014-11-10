@@ -8,11 +8,27 @@
       <% @photos.each do |photo|%>
         <p> <%= image_tag photo.image.url %></p>
         <%= link_to "#{photo.caption}", photo_path(photo)%>
+        <%= link_to "Delete", photo_path(photo), method: :delete %>
+        <%= link_to "Add comment", new_photo_comment_path(photo) %>
+        <% if photo.comments.any? %>
+          <ul>
+            <% photo.comments.each do |comment|%>
+              <li>
+                <%= comment.coment %>
+              </li>
+              <% end %>
+          </ul>
+        <% else %>
+          <p>No reviews. </p>
+        <% end %>
+
       <% end %>
     <% else %>
     No photos
     <% end %>
     <a href='/photos/new'>Add a photo</a>
+
+
 
   </body>
 
