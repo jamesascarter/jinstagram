@@ -6,19 +6,14 @@
   <body>
     <% if @photos.any? %>
       <% @photos.each do |photo|%>
-        <h2> <%= image_tag photo.image.url(:standard) %></h2>
+        <p> <%= image_tag photo.image.url %></p>
+        <%= link_to "#{photo.caption}", photo_path(photo)%>
       <% end %>
     <% else %>
     No photos
     <% end %>
-    <a href='#'>Add a photo</a>
+    <a href='/photos/new'>Add a photo</a>
 
   </body>
-
-
-
-
-
-
 
 </html>

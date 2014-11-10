@@ -1,0 +1,15 @@
+
+<%= form_for @photo do |f|%>
+  <%= f.label :caption %>
+  <%= f.text_field :caption %>
+  <%= f.submit 'Upload photo' %>
+<% end %>
+
+<%= form_for @photo, html: {multipart: true} do |f| %>
+  <%= f.label :image %>
+  <%= f.file_field :image %>
+<% end %>
+
+
+
+
