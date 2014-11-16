@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'helpers/usersignup'
 
 describe 'photos' do
   context 'no photos have yet been added' do
@@ -35,7 +36,8 @@ end
 describe 'adding new photos' do
 
     it 'prompts user to use uploader and will display the caption on the page' do
-      visit '/photos'
+      usersignup
+      visit '/'
       click_link 'Add a photo'
       fill_in 'Caption', with: 'lovely stuff'
       click_button 'Upload photo'
@@ -44,6 +46,7 @@ describe 'adding new photos' do
     end
 
     it 'allows user to upload a photo and view it on the page' do
+      usersignup
       visit '/photos'
       click_link 'Add a photo'
       fill_in 'Caption', with: 'lovely stuff'
@@ -73,6 +76,7 @@ end
 
 describe 'deleting restaurants' do
     before do
+      usersignup
       @owly = Photo.create(caption:'lovely stuff', image: File.open("#{Rails.root}/spec/fixtures/lager.jpeg"))
     end
 

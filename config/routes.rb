@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks"}
   resources :photos do
     resources :comments
+    resources :likes
   end
 
   # You can have the root of your site routed with "root

@@ -32,6 +32,8 @@ gem 'paperclip'
 gem 'launchy'
 gem 'devise'
 gem 'omniauth-facebook'
+gem 'poltergeist', group: :test
+gem 'database_cleaner', group: :test
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

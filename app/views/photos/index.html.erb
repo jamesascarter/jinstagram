@@ -10,6 +10,8 @@
         <%= link_to "#{photo.caption}", photo_path(photo)%>
         <%= link_to "Delete", photo_path(photo), method: :delete %>
         <%= link_to "Add comment", new_photo_comment_path(photo) %>
+        <p> <%= photo.likes.count %> likes</p>
+
         <% if photo.comments.any? %>
           <ul>
             <% photo.comments.each do |comment|%>
