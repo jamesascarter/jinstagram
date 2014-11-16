@@ -10,7 +10,8 @@
         <%= link_to "#{photo.caption}", photo_path(photo)%>
         <%= link_to "Delete", photo_path(photo), method: :delete %>
         <%= link_to "Add comment", new_photo_comment_path(photo) %>
-        <p> <%= photo.likes.count %> likes</p>
+        <%= link_to 'Like', photo_likes_path(photo), class: 'likes-link'%>
+        <span class= 'likes_count'> <%= photo.likes.count %> </span> likes
 
         <% if photo.comments.any? %>
           <ul>
