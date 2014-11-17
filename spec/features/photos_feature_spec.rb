@@ -74,17 +74,27 @@ describe 'viewing photos' do
     end
 end
 
-describe 'deleting restaurants' do
+describe 'deleting photos' do
     before do
       usersignup
-      @owly = Photo.create(caption:'lovely stuff', image: File.open("#{Rails.root}/spec/fixtures/lager.jpeg"))
+      Photo.create(caption:'lovely stuff', image: File.open("#{Rails.root}/spec/fixtures/lager.jpeg"))
     end
 
     it 'removes a photo when user clicks a delete link' do
       visit '/photos'
+      click_link 'Add a photo'
+      fill_in 'Caption', with: 'cool beans'
+      click_button 'Upload photo'
       click_link 'Delete'
-      expect(page).not_to have_content 'lovely stuff'
+      expect(page).not_to have_content 'cool beans'
       expect(page).to have_content 'photo deleted successfully'
+    end
+
+    it 'only works when same user created the photo' do
+      click_link 'Sign out'
+      usersignup1
+      visit '/photos'
+      expect(page).not_to have_link('Delete')
     end
   end
 

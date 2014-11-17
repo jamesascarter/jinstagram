@@ -34,6 +34,9 @@ gem 'devise'
 gem 'omniauth-facebook'
 gem 'poltergeist', group: :test
 gem 'database_cleaner', group: :test
+gem 'warden'
+gem 'pry', group: [:test, :development]
+gem 'cancan'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

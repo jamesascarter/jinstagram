@@ -8,10 +8,13 @@
       <% @photos.each do |photo|%>
         <p> <%= image_tag photo.image.url(:thumb) %></p>
         <%= link_to "#{photo.caption}", photo_path(photo)%>
-        <%= link_to "Delete", photo_path(photo), method: :delete %>
         <%= link_to "Add comment", new_photo_comment_path(photo) %>
-        <%= link_to 'Like', photo_likes_path(photo), class: 'likes-link'%>
-        <span class= 'likes_count'> <%= photo.likes.count %> </span> likes
+        <p><%= link_to 'Like', photo_likes_path(photo), class: 'likes-link'%>
+        <span class= 'likes_count'> <%= photo.likes.count %> </span> likes</p>
+
+         <% if can? :destroy, photo %>
+         <%= link_to "Delete", photo_path(photo), method: :delete %>
+         <% end %>
 
         <% if photo.comments.any? %>
           <ul>
