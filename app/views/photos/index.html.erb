@@ -12,9 +12,9 @@
         <p><%= link_to 'Like', photo_likes_path(photo), class: 'likes-link'%>
         <span class= 'likes_count'> <%= photo.likes.count %> </span> likes</p>
 
-         <% if can? :destroy, photo %>
-         <%= link_to "Delete", photo_path(photo), method: :delete %>
-         <% end %>
+        <% if can? :destroy, photo %>
+        <%= link_to "Delete", photo_path(photo), method: :delete %>
+        <% end %>
 
         <% if photo.comments.any? %>
           <ul>
@@ -33,9 +33,9 @@
     No photos
     <% end %>
 
-
+    <% if current_user %>
     <a href='/photos/new'>Add a photo</a>
-
+    <% end %>
 
 
   </body>

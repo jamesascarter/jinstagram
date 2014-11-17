@@ -9,7 +9,8 @@ describe 'photos' do
       expect(page).to have_content 'No photos'
     end
 
-    it 'should allow user to click upload link' do
+    it 'should allow user to click upload link if logged in' do
+      usersignup
       visit '/photos'
       expect(page).to have_link 'Add a photo'
     end
@@ -53,6 +54,11 @@ describe 'adding new photos' do
       attach_file 'Image', "public/owl.jpeg"
       click_button 'Upload photo'
       expect(page).to have_css 'img'
+    end
+
+    it 'is not allowed if nor signed in' do
+      visit '/'
+      expect(page).not_to have_link 'Add a photo'
     end
 end
 
