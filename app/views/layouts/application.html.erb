@@ -14,7 +14,7 @@
 <body>
   <header>
   <h1>Jinstagram</h1>
-  <nav id="signinlinks">
+  <nav id="signuplinks">
   <% if user_signed_in? %>
   <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
   <% else %>

@@ -105,7 +105,7 @@ describe 'deleting photos' do
 
     it 'removes a photo when user clicks a delete link' do
       visit '/photos'
-      click_link 'Delete'
+      click_link 'trash'
       expect(page).not_to have_content 'coool'
       expect(page).to have_content 'photo deleted successfully'
     end

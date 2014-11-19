@@ -3,18 +3,17 @@
     <% if @photos.any? %>
       <% @photos.each do |photo|%>
         <ul class="photos">
-        <li> <%= image_tag photo.image.url(:medium) %>
-        <%= link_to "#{photo.caption}", photo_path(photo)%>
-        <%= photo.user.email %>
+        <li id='photo'> <%= image_tag photo.image.url(:medium) %></li>
+        <li id='captionemail'><%= link_to "#{photo.caption}", photo_path(photo)%> <%= photo.user.email %></li>
+        <% if can? :destroy, photo %>
+        <%= link_to image_tag("/images/trashcan.png", :alt=> 'trash', :class => 'trash'), photo_path(photo), method: :delete %>
+        <% end %>
         </li>
         </ul>
-        <%= link_to "Add comment", new_photo_comment_path(photo) %>
-        <p><%= link_to 'Like', photo_likes_path(photo), class: 'likes-link'%>
-        <span class= 'likes_count'> <%= photo.likes.count %> </span> likes</p>
+        <p><%= link_to image_tag("/images/heart.png", :alt=> 'Like', :class => 'Like'), photo_likes_path(photo), class: 'likes-link'%>
 
-        <% if can? :destroy, photo %>
-        <%= link_to "Delete", photo_path(photo), method: :delete %>
-        <% end %>
+        <span class= 'likes_count'> <%= photo.likes.count %> </span> likes</p>
+        <%= link_to "Add comment", new_photo_comment_path(photo) %>
 
         <% if photo.comments.any? %>
 
