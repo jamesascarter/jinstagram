@@ -15,3 +15,10 @@ def usersignup1
   fill_in('Password confirmation', with: 'testtest1')
   click_button('Sign up')
 end
+
+def photoupload
+  click_link 'Add a photo'
+  fill_in('Caption', with: 'coool')
+  attach_file('Image', "spec/fixtures/lager.jpeg")
+  click_button 'Upload photo'
+end

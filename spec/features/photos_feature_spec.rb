@@ -16,10 +16,14 @@ describe 'photos' do
     end
 
   end
+end
+
+  describe "user signed in" do
 
   context 'have been uploaded' do
     before do
-      Photo.create(caption:'lovely stuff', image: File.open("#{Rails.root}/spec/fixtures/lager.jpeg"))
+      usersignup
+      photoupload
     end
 
     it 'user can see photo' do
@@ -29,12 +33,11 @@ describe 'photos' do
 
     it 'user can see caption' do
       visit '/photos'
-      expect(page).to have_content 'lovely stuff'
+      expect(page).to have_content 'coool'
     end
-  end
-end
+   end
 
-describe 'adding new photos' do
+  context 'adding new photos' do
 
     it 'prompts user to use uploader and will display the caption on the page' do
       usersignup
@@ -45,6 +48,18 @@ describe 'adding new photos' do
       expect(page).to have_content 'lovely stuff'
       expect(current_path).to eq '/photos'
     end
+
+    it 'shows the user email address with post' do
+      usersignup
+      visit '/'
+      click_link 'Add a photo'
+      fill_in 'Caption', with: 'lovely stuff'
+      click_button 'Upload photo'
+      expect(page).to have_content 'test@test.com'
+
+    end
+
+
 
     it 'allows user to upload a photo and view it on the page' do
       usersignup
@@ -62,20 +77,22 @@ describe 'adding new photos' do
     end
 end
 
-describe 'viewing photos' do
+context 'viewing photos' do
     before do
-      @owly = Photo.create(caption:'lovely stuff', image: File.open("#{Rails.root}/spec/fixtures/lager.jpeg"))
+      usersignup
+      photoupload
     end
 
-    it 'lets a user view a photo' do
+    it 'lets a user view a photo if not signed in' do
       visit '/photos'
-      click_link 'lovely stuff'
-      expect(current_path).to eq "/photos/#{@owly.id}"
+      click_link 'Sign out'
+      expect(page).to have_css 'img'
+
     end
 
     it 'lets a user see photos on seperate page' do
       visit '/photos'
-      click_link 'lovely stuff'
+      click_link 'coool'
       expect(page).to have_css 'img'
     end
 end
@@ -83,16 +100,13 @@ end
 describe 'deleting photos' do
     before do
       usersignup
-      Photo.create(caption:'lovely stuff', image: File.open("#{Rails.root}/spec/fixtures/lager.jpeg"))
+      photoupload
     end
 
     it 'removes a photo when user clicks a delete link' do
       visit '/photos'
-      click_link 'Add a photo'
-      fill_in 'Caption', with: 'cool beans'
-      click_button 'Upload photo'
       click_link 'Delete'
-      expect(page).not_to have_content 'cool beans'
+      expect(page).not_to have_content 'coool'
       expect(page).to have_content 'photo deleted successfully'
     end
 
@@ -103,5 +117,5 @@ describe 'deleting photos' do
       expect(page).not_to have_link('Delete')
     end
   end
-
+end
 

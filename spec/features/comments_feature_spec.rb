@@ -1,8 +1,10 @@
 require 'rails_helper'
+require 'helpers/usersignup'
 
 describe 'comments' do
   before do
-    Photo.create(caption:'lovely stuff', image: File.open("#{Rails.root}/spec/fixtures/lager.jpeg"))
+    usersignup
+    photoupload
   end
 
   it 'allows users to leave a commment using a form' do

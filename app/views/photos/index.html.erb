@@ -1,13 +1,13 @@
-<html>
 
-  <head>
-  </head>
-
-  <body>
+    <section class='posts'>
     <% if @photos.any? %>
       <% @photos.each do |photo|%>
-        <p> <%= image_tag photo.image.url(:thumb) %></p>
+        <ul class="photos">
+        <li> <%= image_tag photo.image.url(:medium) %>
         <%= link_to "#{photo.caption}", photo_path(photo)%>
+        <%= photo.user.email %>
+        </li>
+        </ul>
         <%= link_to "Add comment", new_photo_comment_path(photo) %>
         <p><%= link_to 'Like', photo_likes_path(photo), class: 'likes-link'%>
         <span class= 'likes_count'> <%= photo.likes.count %> </span> likes</p>
@@ -17,13 +17,15 @@
         <% end %>
 
         <% if photo.comments.any? %>
-          <ul>
+
             <% photo.comments.each do |comment|%>
+            <ul class='comments'>
               <li>
                 <%= comment.coment %>
               </li>
               <% end %>
           </ul>
+
         <% else %>
           <p>No comments. </p>
         <% end %>
@@ -32,12 +34,8 @@
     <% else %>
     No photos
     <% end %>
+    </section>
 
     <% if current_user %>
-    <a href='/photos/new'>Add a photo</a>
+    <a id="addphoto" href='/photos/new'>Add a photo</a>
     <% end %>
-
-
-  </body>
-
-</html>

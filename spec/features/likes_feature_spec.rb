@@ -2,7 +2,8 @@ require 'rails_helper'
 
 describe 'liking posts' do
   before do
-    bouncycastle = Photo.create(caption: 'bouncy castle', image: File.open("#{Rails.root}/spec/fixtures/lager.jpeg"))
+    usersignup
+    photoupload
   end
 
   it 'a user can like a photo, which will update the like count', js: true do

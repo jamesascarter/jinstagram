@@ -1,19 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Cinzel:700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=Fira+Sans' rel='stylesheet' type='text/css'>
   <title>Jinstagram</title>
+  <link href='/css/reset.css' type='text/css' rel='stylesheet'>
+  <link href='/css/stylesheet.css' type='text/css' rel='stylesheet'>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <header>
+  <h1>Jinstagram</h1>
+  <nav id="signinlinks">
   <% if user_signed_in? %>
   <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
   <% else %>
   <%= link_to "Sign in", new_user_session_path %>
   <%= link_to "Sign up", new_user_registration_path %>
   <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-<% end %>
+  <% end %>
+  </nav>
+  </header>
 <%= notice %>
 <%= yield %>
 
