@@ -17,7 +17,8 @@ def usersignup1
 end
 
 def photoupload
-  click_link 'Add a photo'
+  visit '/'
+  click_link('Add a photo')
   fill_in('Caption', with: 'coool')
   attach_file('Image', "spec/fixtures/lager.jpeg")
   click_button 'Upload photo'

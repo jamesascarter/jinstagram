@@ -1,4 +1,4 @@
-
+<section id='photos_field'>
 <%= form_for @photo, html: {multipart: true} do |f| %>
   <%= f.label :caption %>
   <%= f.text_field :caption %>
@@ -6,6 +6,7 @@
   <%= f.label :image %>
   <%= f.file_field :image %>
 <% end %>
+</section>
 
 
 

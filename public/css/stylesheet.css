@@ -1,24 +1,31 @@
+
 header {
   background-color: #517fa4;
   width: 100%;
-  height: 100px;
-  /*text-align: center;*/
+  height: 43px;
+  position:fixed;
+  top:0;
+}
+
+#addphoto {
+
 }
 
 h1 {
   text-align: center;
   font-size:36px;
-  font-family: 'Fira Sans', sans-serif;
+  font-family: 'freight-sans-pro','proxima-nova','Helvetica Neue',Arial,Helvetica,sans-serif;
 }
 
-#signuplinks {
+.signuplinks {
   padding-top: 38px;
   font-family: 'Fira Sans', sans-serif;
   text-decoration: none;
 }
 
 .posts {
-  background-color:grey;
+  margin-top:43px;
+  background-color: grey;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -31,9 +38,15 @@ h1 {
 
 }
 
-.posts {
+.yellow-block {
+  background-color: yellow;
+  text-align: center;
+  height: auto;
+  margin-bottom: 5px;
+}
 
-  padding-left: 100px;
+.comment-box{
+  height: auto;
 }
 
 .Like {
@@ -42,6 +55,12 @@ h1 {
 
 .trash {
   height: 20px;
-
 }
 
+#comments_field {
+  margin-top:120px;
+}
+
+#photos_field {
+  margin-top:43px;
+}

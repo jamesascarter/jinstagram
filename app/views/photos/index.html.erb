@@ -1,40 +1,43 @@
 
-    <section class='posts'>
-    <% if @photos.any? %>
+<section class='posts'>
+  <% if @photos.any? %>
+    <ul class="photos">
       <% @photos.each do |photo|%>
-        <ul class="photos">
-        <li id='photo'> <%= image_tag photo.image.url(:medium) %></li>
-        <li id='captionemail'><%= link_to "#{photo.caption}", photo_path(photo)%> <%= photo.user.email %></li>
-        <% if can? :destroy, photo %>
-        <%= link_to image_tag("/images/trashcan.png", :alt=> 'trash', :class => 'trash'), photo_path(photo), method: :delete %>
-        <% end %>
-        </li>
-        </ul>
-        <p><%= link_to image_tag("/images/heart.png", :alt=> 'Like', :class => 'Like'), photo_likes_path(photo), class: 'likes-link'%>
-
-        <span class= 'likes_count'> <%= photo.likes.count %> </span> likes</p>
-        <%= link_to "Add comment", new_photo_comment_path(photo) %>
-
-        <% if photo.comments.any? %>
-
-            <% photo.comments.each do |comment|%>
-            <ul class='comments'>
-              <li>
-                <%= comment.coment %>
-              </li>
+        <div class='yellow-block'>
+          <li class='photo'>
+            <p><%= image_tag photo.image.url(:medium) %></p>
+            <p class='captionemail'><%= link_to "#{photo.caption}", photo_path(photo)%>    <%= photo.user.email %></p>
+            <p>
+              <% if can? :destroy, photo %>
+              <%= link_to image_tag("/images/trashcan.png", :alt=> 'trash', :class => 'trash'), photo_path(photo), method: :delete %>
               <% end %>
-          </ul>
+            </p>
 
-        <% else %>
-          <p>No comments. </p>
-        <% end %>
+              <%= link_to image_tag("/images/heart.png", :alt=> 'Like', :class => 'Like'), photo_likes_path(photo), class: 'likes-link'%>
 
+            <span class= 'likes_count'> <%= photo.likes.count %> </span> likes
+            <p><%= link_to "Add comment", new_photo_comment_path(photo) %></p>
+            <article class="comment-box">
+              <% if photo.comments.any? %>
+                <ul class='comments'>
+                  <% photo.comments.each do |comment|%>
+                    <li><%= comment.coment %></li>
+                  <% end %>
+                </ul>
+              <% else %>
+                <p>No comments. </p>
+              <% end %>
+            </article>
+          </li>
+        </div>
       <% end %>
-    <% else %>
+    </ul>
+  <% else %>
     No photos
-    <% end %>
-    </section>
-
+  <% end %>
+</section>
+<section id='addphoto'>
     <% if current_user %>
-    <a id="addphoto" href='/photos/new'>Add a photo</a>
+    <a id="addphotolink" href='/photos/new'>Add a photo</a>
     <% end %>
+</section>
