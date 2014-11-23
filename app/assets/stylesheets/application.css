@@ -13,3 +13,64 @@
  *= require_tree .
  *= require_self
  */
+header {
+  background-color: #517fa4;
+  width: 100%;
+  top:0;
+  margin-bottom: 5%;
+}
+
+
+h1 {
+  text-align: center;
+  font-size:36px;
+  font-family: 'freight-sans-pro','proxima-nova','Helvetica Neue',Arial,Helvetica,sans-serif;
+}
+
+.signuplinks {
+  font-family: 'Fira Sans', sans-serif;
+  top:0;
+  padding-bottom: 2%;
+}
+
+.posts {
+  margin-top:43px;
+  background-color: grey;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 700px;
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.comments {
+  /*background-color: white;*/
+
+}
+
+.yellow-block {
+  background-color: yellow;
+  text-align: center;
+  height: auto;
+  margin-bottom: 5px;
+}
+
+.comment-box{
+  height: auto;
+}
+
+.Like {
+  height: 20px;
+}
+
+.trash {
+  height: 20px;
+}
+
+#comments_field {
+  margin-top:120px;
+}
+
+.photos_field {
+  margin-top:300px;
+}
