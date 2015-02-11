@@ -11,7 +11,6 @@ class CommentsController < ApplicationController
     redirect_to photos_path
   end
 
-
   def comment_params
     params.require(:comment).permit(:coment)
   end
